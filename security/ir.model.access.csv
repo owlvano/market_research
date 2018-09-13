@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_market_research_market_research,market_research.market_research,model_market_research_market_research,,1,0,0,0
