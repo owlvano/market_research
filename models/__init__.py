@@ -1,4 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import measuring
-from . import measurement
+from . import market_research

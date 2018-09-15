@@ -1,0 +1,11 @@
+<odoo>
+  <data>
+
+    <!-- Top menu item -->
+    
+    <menuitem 
+        name="Market Research" 
+        id="menu_root"/>
+    
+  </data>
+</odoo>
