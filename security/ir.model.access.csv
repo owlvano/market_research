@@ -1,1 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+measurement_order_user,measurement order user access,model_market_research_measurement_order,market_research.group_user,1,0,0,0
+measurement_order_manager,measurement order manager access,model_market_research_measurement_order,market_research.group_manager,1,1,1,1
+tradepoint_order_user,tradepoint order user access,model_market_research_tradepoint_order,market_research.group_user,1,0,0,0
+tradepoint_order_manager,tradepoint order manager access,model_market_research_tradepoint_order,market_research.group_manager,1,1,1,1

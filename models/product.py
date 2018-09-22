@@ -4,13 +4,13 @@ from odoo import models, fields, api, _
 import odoo.addons.decimal_precision as dp
 
 class Product(models.Model):
-    _name = 'market_research.product'
+    _name = 'market.research.product'
     _description = _("This model stores products that are being analyzed in a specific measurement order")
 
     product_id = fields.Many2one('product.product', string="Product")
     price = fields.Float(string="Price", digits=dp.get_precision('Product Price'))
 
-    measurement_order_id = fields.Many2one('market_research.measurement.order', string="Measurement Order")
+    measurement_order_id = fields.Many2one('market.research.measurement.order', string="Measurement Order")
 
     @api.model
     def create(self, vals):
