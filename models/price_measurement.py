@@ -2,14 +2,14 @@
 
 from odoo import models, fields, api, _
 
-class Product(models.Model):
+class PriceMeasurement(models.Model):
     _name = 'market.research.price.measurement'
     _description = _("This model stores product price measurement on specific tradepoints")
 
     product_id = fields.Many2one('product.product', string="Product", required=True)
     measured_price = fields.Float(string="Measured Price")
 
-    tradepoint_order_id = fields.Many2one('market.research.tradepoint.order', string="Tradepoint Order")
+    tradepoint_order_id = fields.Many2one('market.research.tradepoint.order', string="Tradepoint Order", default=lambda self: self._get_default_tradepoint_order())
 
     _sql_constraints = [
         ('product_unique',
@@ -17,10 +17,14 @@ class Product(models.Model):
          'Product measurement must be unique for the tradepoint!')]
 
     @api.model
-    def create(self, vals):
-        record = super(Product, self).create(vals)
-        
-        if self.env.context.get('default_tradepoint_order_id'):
-            record.tradepoint_order_id = self.env.context.get('default_tradepoint_order_id')
+    def _get_default_tradepoint_order(self):
+        return self.env.context.get('default_tradepoint_order_id') or False
 
+    @api.model
+    def create(self, values):
+        record = super(PriceMeasurement, self).create(values)
+
+        record.product_id = values['product_id']
+        record.tradepoint_order_id = values['tradepoint_order_id']  
+        
         return record

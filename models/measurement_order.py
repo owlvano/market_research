@@ -9,6 +9,7 @@ class MeasurementOrder(models.Model):
 
     name = fields.Char(string="Name", translate=True)
     responsible_id = fields.Many2one('res.users', string="Responsible User")
+    default_assigned_user_id = fields.Many2one('res.users', string="Default Assigned User")
     deadline_date = fields.Date(string="Deadline")
     approval_date = fields.Date(string="Approval Date")
     stage = fields.Selection([
@@ -29,3 +30,13 @@ class MeasurementOrder(models.Model):
 
         return record
            
+    @api.multi
+    def action_assign(self):
+        self.ensure_one()
+
+        for tradepoint_id in self.tradepoint_order_ids:
+            for product_id in self.product_ids:
+                self.env['market.research.price.measurement'].create({'tradepoint_order_id': tradepoint_id.id, 'product_id': product_id.product_id.id})
+
+        self.write({'stage': 'planned'})
+        return True

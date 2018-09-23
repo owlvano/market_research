@@ -12,7 +12,7 @@ class TradepointOrder(models.Model):
     address = fields.Char(string="Address")
     deadline_date = fields.Date(string="Deadline", related='measurement_order_id.deadline_date')
 
-    measurement_order_id = fields.Many2one('market.research.measurement.order', string="Measurement Order")
+    measurement_order_id = fields.Many2one('market.research.measurement.order', string="Measurement Order", default=lambda self: self._get_default_measurement_order())
     price_measurement_ids = fields.One2many('market.research.price.measurement', 'tradepoint_order_id', string="Price Measurements")
 
     _sql_constraints = [
@@ -21,10 +21,5 @@ class TradepointOrder(models.Model):
          'Clients must be unique for the measurement order!')]
 
     @api.model
-    def create(self, vals):
-        record = super(TradepointOrder, self).create(vals)
-        
-        if self.env.context.get('default_measurement_order_id'):
-            record.measurement_order_id = self.env.context.get('default_measurement_order_id')
-
-        return record
+    def _get_default_measurement_order(self):
+        return self.env.context.get('default_measurement_order_id') or False

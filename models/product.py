@@ -9,7 +9,7 @@ class Product(models.Model):
     product_id = fields.Many2one('product.product', string="Product", required=True)
     price = fields.Float(string="Price")
 
-    measurement_order_id = fields.Many2one('market.research.measurement.order', string="Measurement Order")
+    measurement_order_id = fields.Many2one('market.research.measurement.order', string="Measurement Order", default=lambda self: self._get_default_measurement_order())
 
     _sql_constraints = [
         ('product_unique',
@@ -17,10 +17,5 @@ class Product(models.Model):
          'Products must be unique for the measurement order!')]
 
     @api.model
-    def create(self, vals):
-        record = super(Product, self).create(vals)
-        
-        if self.env.context.get('default_measurement_order_id'):
-            record.measurement_order_id = self.env.context.get('default_measurement_order_id')
-
-        return record
+    def _get_default_measurement_order(self):
+        return self.env.context.get('default_measurement_order_id') or False
