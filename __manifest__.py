@@ -21,18 +21,18 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'decimal_precision'],
+    'depends': ['base', 'sale'],
 
     # always loaded
     'data': [
-        'security/user_groups.xml',
-        'security/ir.model.access.csv',
+        # 'security/user_groups.xml',
+        # 'security/ir.model.access.csv',
         'views/market_research_views.xml',
         'views/measurement_order_views.xml',
         'views/tradepoint_order_views.xml',
+        'views/product_views.xml',
+        'views/price_measurement_views.xml',
+        'views/market_research_technical_views.xml',
     ],
-    # only loaded in demonstration mode
-    # 'demo': [
-    #     'demo/demo.xml',
-    # ],
+
 }

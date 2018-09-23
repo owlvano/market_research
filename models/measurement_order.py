@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
-from odoo.fields import Datetime
+from odoo.fields import Date
 
 class MeasurementOrder(models.Model):
     _name = 'market.research.measurement.order'
     _description = _("Management of the price analysis process")
 
-    name = fields.Char(string="Summary")
-    computed_name = fields.Char(translate=True)
+    name = fields.Char(string="Name", translate=True)
     responsible_id = fields.Many2one('res.users', string="Responsible User")
     deadline_date = fields.Date(string="Deadline")
     approval_date = fields.Date(string="Approval Date")
@@ -26,7 +25,7 @@ class MeasurementOrder(models.Model):
     def create(self, vals):
         record = super(MeasurementOrder, self).create(vals)
         
-        record.computed_name = _("Measurement order #%d since %s") % (record.id, Datetime.from_string(record.create_date).strftime("%d.%m.%Y"))
+        record.name = _("Measurement order #%d since %s") % (record.id, Date.from_string(record.create_date).strftime("%d.%m.%Y"))
 
         return record
            

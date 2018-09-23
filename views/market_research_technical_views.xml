@@ -1,0 +1,68 @@
+<odoo>
+  <data>
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="action_measurement_order_technical">
+        <field name="name">Measurement Orders</field>
+        <field name="res_model">market.research.measurement.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_tradepoint_order_technical">
+        <field name="name">Tradepoint Orders</field>
+        <field name="res_model">market.research.tradepoint.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_product_technical">
+        <field name="name">Products</field>
+        <field name="res_model">market.research.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_price_measurement_technical">
+        <field name="name">Price Measurements</field>
+        <field name="res_model">market.research.price.measurement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    
+    <menuitem 
+        name="Market Research" 
+        id="menu_technical"
+        parent="base.menu_custom"/>
+    
+        <!-- menu categories -->
+    
+    <menuitem 
+        name="Measurement Orders" 
+        id="menu_measurement_order_technical" 
+        parent="menu_technical"
+        sequence="10"
+        action="action_measurement_order_technical"/>
+    
+    <menuitem 
+        name="Tradepoint Orders" 
+        id="menu_tradepoint_order_technical" 
+        parent="menu_technical"
+        sequence="20"
+        action="action_tradepoint_order_technical"/> 
+
+    <menuitem 
+        name="Products" 
+        id="menu_product_technical" 
+        parent="menu_technical"
+        sequence="30"
+        action="action_product_technical"/> 
+
+    <menuitem 
+        name="Price Measurements" 
+        id="menu_price_measurement_technical" 
+        parent="menu_technical"
+        sequence="40"
+        action="action_price_measurement_technical"/> 
+
+  </data>
+</odoo>
