@@ -5,10 +5,11 @@ from odoo.fields import Date
 
 class MeasurementOrder(models.Model):
     _name = 'market.research.measurement.order'
+    _inherit = ['mail.thread']
     _description = _("Management of the price analysis process")
 
-    name = fields.Char(string="Name", translate=True)
-    responsible_id = fields.Many2one('res.users', string="Responsible User")
+    name = fields.Char(string="Name", translate=True, track_visibility='always')
+    responsible_id = fields.Many2one('res.users', string="Responsible User", track_visibility='always')
     default_assigned_user_id = fields.Many2one('res.users', string="Default Assigned User")
     deadline_date = fields.Date(string="Deadline")
     approval_date = fields.Date(string="Approval Date")
@@ -17,7 +18,7 @@ class MeasurementOrder(models.Model):
 	    	('planned', 'Planned'), 
 	    	('completed', 'Completed'), 
 	    	('cancelled', 'Cancelled')
-            ],default='draft')
+            ],default='draft', track_visibility='onchange')
 
     tradepoint_order_ids = fields.One2many('market.research.tradepoint.order', 'measurement_order_id', string="Trade Points")
     product_ids = fields.One2many('market.research.product', 'measurement_order_id', string="Products")
