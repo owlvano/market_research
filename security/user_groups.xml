@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data> 
-        <!-- 
+        
         <record model="ir.module.category" id="module_category_market_research">
             <field name="name" >Market Research</field>
             <field name="description">User access level for the Market Research module</field>
@@ -20,7 +20,7 @@
             <field name="implied_ids" eval="[(4, ref('market_research.group_user'))]"/>
             <field name="category_id" ref="market_research.module_category_market_research"/>
         </record>
-         -->
+        
         <!-- Employees only have access to tickets they're assigned to -->
         <!--         
         <record id="market_research_user_rule" model="ir.rule">

@@ -3,3 +3,7 @@ measurement_order_user,measurement order user access,model_market_research_measu
 measurement_order_manager,measurement order manager access,model_market_research_measurement_order,market_research.group_manager,1,1,1,1
 tradepoint_order_user,tradepoint order user access,model_market_research_tradepoint_order,market_research.group_user,1,0,0,0
 tradepoint_order_manager,tradepoint order manager access,model_market_research_tradepoint_order,market_research.group_manager,1,1,1,1
+product_user,product user access,model_market_research_product,market_research.group_user,1,0,0,0
+product_manager,product manager access,model_market_research_product,market_research.group_manager,1,1,1,1
+price_measurement_user,price measurement user access,model_market_research_price_measurement,market_research.group_user,1,0,0,0
+price_measurement_manager,price measurement manager access,model_market_research_price_measurement,market_research.group_manager,1,1,1,1
