@@ -1,9 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-measurement_order_user,measurement order user access,model_market_research_measurement_order,market_research.group_user,1,0,0,0
-measurement_order_manager,measurement order manager access,model_market_research_measurement_order,market_research.group_manager,1,1,1,1
-tradepoint_order_user,tradepoint order user access,model_market_research_tradepoint_order,market_research.group_user,1,0,0,0
-tradepoint_order_manager,tradepoint order manager access,model_market_research_tradepoint_order,market_research.group_manager,1,1,1,1
-product_user,product user access,model_market_research_product,market_research.group_user,1,0,0,0
-product_manager,product manager access,model_market_research_product,market_research.group_manager,1,1,1,1
-price_measurement_user,price measurement user access,model_market_research_price_measurement,market_research.group_user,1,0,0,0
-price_measurement_manager,price measurement manager access,model_market_research_price_measurement,market_research.group_manager,1,1,1,1
+measurement_order_manager,measurement order manager access,model_market_research_measurement_order,sales_team.group_sale_manager,1,1,1,1
+tradepoint_order_manager,tradepoint order manager access,model_market_research_tradepoint_order,sales_team.group_sale_manager,1,1,1,1
+product_manager,product manager access,model_market_research_product,sales_team.group_sale_manager,1,1,1,1
+price_measurement_manager,price measurement manager access,model_market_research_price_measurement,sales_team.group_sale_manager,1,1,1,1
