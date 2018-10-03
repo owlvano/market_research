@@ -5,7 +5,9 @@
     
     <menuitem 
         name="Market Research" 
-        id="menu_root"/>
+        id="menu_root"
+        parent="sales_team.menu_base_partner"
+        sequence="90"/>
     
   </data>
 </odoo>

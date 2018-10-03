@@ -21,7 +21,9 @@
             <form string="Measurement Order">
                 <header>
                     <button name="action_assign" type="object" string="Assign Orders" attrs="{'invisible': [('stage', 'not in', 'draft')]}"/>
-                    <field name="stage" widget="statusbar"/>
+                    <button name="action_complete" type="object" string="Mark as Done" attrs="{'invisible': [('stage', 'not in', 'planned')]}"/>
+                    <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': [('stage', 'not in', 'planned')]}"/>
+                    <field name="stage" widget="statusbar" statusbar_visible="draft,planned,completed"/>
                 </header>
                 <sheet string="Measurement Order">
                     <div class="oe_title">

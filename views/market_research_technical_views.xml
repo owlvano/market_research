@@ -32,7 +32,8 @@
     <menuitem 
         name="Market Research" 
         id="menu_technical"
-        parent="base.menu_custom"/>
+        parent="sales_team.menu_sale_config"
+        sequence="90"/>
     
         <!-- menu categories -->
     

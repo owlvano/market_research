@@ -41,3 +41,17 @@ class MeasurementOrder(models.Model):
 
         self.write({'stage': 'planned'})
         return True
+
+    @api.multi
+    def action_complete(self):
+        self.ensure_one()
+
+        self.write({'stage': 'completed'})
+        return True
+
+    @api.multi
+    def action_cancel(self):
+        self.ensure_one()
+
+        self.write({'stage': 'cancelled'})
+        return True        
