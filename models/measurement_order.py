@@ -6,7 +6,7 @@ from odoo.fields import Date
 class MeasurementOrder(models.Model):
     _name = 'market.research.measurement.order'
     _inherit = ['mail.thread']
-    _description = _("Management of the price analysis process")
+    _description = _("Measurement Order")
 
     name = fields.Char(string="Name", translate=True, track_visibility='always')
     responsible_id = fields.Many2one('res.users', string="Responsible User", track_visibility='always')
@@ -38,7 +38,7 @@ class MeasurementOrder(models.Model):
         for tradepoint_id in self.tradepoint_order_ids:
             for product_id in self.product_ids:
                 self.env['market.research.price.measurement'].create({'tradepoint_order_id': tradepoint_id.id, 'product_id': product_id.product_id.id})
-
+            tradepoint_id.write({'stage': 'planned'})
         self.write({'stage': 'planned'})
         return True
 

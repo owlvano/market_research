@@ -5,8 +5,8 @@
     <record model="ir.ui.view" id="product_list">
         <field name="name">market.research.product list</field>
         <field name="model">market.research.product</field>
-        <field name="arch" type="xml">
-            <tree>
+        <field name="arch" type="xml" >
+            <tree create="false" edit="false">
                 <field name="product_id"/>
                 <field name="price"/>
                 <field name="measurement_order_id"/>
@@ -18,7 +18,7 @@
         <field name="name">market.research.product form</field>
         <field name="model">market.research.product</field>
         <field name="arch" type="xml">
-            <form string="Products">
+            <form string="Products" create="false" edit="false">
                 <sheet>
                     <div class="oe_title">
                         <h1 class="o_row">

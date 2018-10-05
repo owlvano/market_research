@@ -4,7 +4,7 @@ from odoo import models, fields, api, _
 
 class PriceMeasurement(models.Model):
     _name = 'market.research.price.measurement'
-    _description = _("This model stores product price measurement on specific tradepoints")
+    _description = _("Product Price Measurement")
 
     product_id = fields.Many2one('product.product', string="Product", required=True)
     measured_price = fields.Float(string="Measured Price")
