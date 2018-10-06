@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+
+    <!-- form view definition -->
+
+    <record model="ir.ui.view" id="price_wizard_form">
+        <field name="name">Price Measurements Wizard</field>
+        <field name="model">price.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_title">
+                    <field name="price_measurement_ids" nolabel="1">
+                        <tree nolabel="1" editable="bottom" default_order="product_id" create="false" delete="false">
+                            <field name="product_id" readonly="1"/>
+                            <field name="measured_price" /> 
+                        </tree>
+                    </field>
+                </div>
+                <footer>
+                    <button type="object" name="do_update_prices" string="Update" class="oe_highlight" />
+                    <button special="cancel" string="Cancel" />
+                </footer>              
+            </form>
+        </field>
+    </record>
+
+
+
+    <!-- actions opening views on models -->
+    
+    <act_window id="price_wizard_action"
+                name="Update Prices"
+                src_model="market.research.tradepoint.order"
+                res_model="price.wizard"
+                view_mode="form"
+                target="new"/>
+    
+
+  </data>
+</odoo>

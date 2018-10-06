@@ -24,6 +24,7 @@
         <field name="arch" type="xml">
             <form string="Tradepoint Order" create="false" edit="false">
                 <header>
+                    <button name="%(price_wizard_action)d" string="Update Prices" type="action" context="{'default_price_measurement_ids': price_measurement_ids}" class="oe_button oe_form_button oe_highlight"/>
                     <field name="stage" widget="statusbar" statusbar_visible="draft,planned,completed"/>
                 </header>
                 <sheet string="Tradepoint Order">
@@ -44,7 +45,7 @@
                     </group>
                     <notebook>
                         <page name="price_page" string="Price Measurements">
-                            <field name="price_measurement_ids" nolabel="1" context="{'default_tradepoint_order_id': id}">
+                            <field name="price_measurement_ids" nolabel="1" readonly="1" context="{'default_tradepoint_order_id': id}">
                                 <tree nolabel="1" editable="bottom" default_order="product_id">
                                     <field name="product_id" />
                                     <field name="measured_price" /> 
