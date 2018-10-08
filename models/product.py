@@ -4,7 +4,7 @@ from odoo import models, fields, api, _
 
 class Product(models.Model):
     _name = 'market.research.product'
-    _description = _("Resaerched Product")
+    _description = _("Researched Product")
 
     product_id = fields.Many2one('product.product', string="Product", required=True)
     price = fields.Float(string="Price")

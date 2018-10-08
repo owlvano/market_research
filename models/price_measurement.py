@@ -10,6 +10,8 @@ class PriceMeasurement(models.Model):
     measured_price = fields.Float(string="Measured Price")
 
     tradepoint_order_id = fields.Many2one('market.research.tradepoint.order', string="Tradepoint Order", default=lambda self: self._get_default_tradepoint_order())
+    assigned_user_id = fields.Many2one('res.users', string="Assigned User", related='tradepoint_order_id.assigned_user_id', store=True)
+    client_id = fields.Many2one('res.partner', string="Client", related='tradepoint_order_id.client_id', store=True)
 
     _sql_constraints = [
         ('product_unique',

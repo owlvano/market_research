@@ -27,7 +27,7 @@ class MeasurementOrder(models.Model):
     def create(self, vals):
         record = super(MeasurementOrder, self).create(vals)
         
-        record.name = _("Measurement order #%d since %s") % (record.id, Date.from_string(record.create_date).strftime("%d.%m.%Y"))
+        record.name = _("#%d since %s") % (record.id, Date.from_string(record.create_date).strftime("%d.%m.%Y"))
 
         return record
            
