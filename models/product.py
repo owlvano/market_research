@@ -14,7 +14,7 @@ class Product(models.Model):
     _sql_constraints = [
         ('product_unique',
          'UNIQUE (measurement_order_id, product_id)',
-         'Products must be unique for the measurement order!')]
+         _('Products must be unique for the measurement order!'))]
 
     @api.model
     def _get_default_measurement_order(self):

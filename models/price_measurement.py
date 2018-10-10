@@ -16,7 +16,7 @@ class PriceMeasurement(models.Model):
     _sql_constraints = [
         ('product_unique',
          'UNIQUE (tradepoint_order_id, product_id)',
-         'Product measurement must be unique for the tradepoint!')]
+         _('Product measurement must be unique for the tradepoint!'))]
 
     @api.model
     def _get_default_tradepoint_order(self):

@@ -25,7 +25,7 @@ class TradepointOrder(models.Model):
     _sql_constraints = [
         ('tradepoint_order_unique',
          'UNIQUE (measurement_order_id, client_id)',
-         'Clients must be unique for the measurement order!')]
+         _('Clients must be unique for the measurement order!'))]
 
     @api.depends('client_id')
     def _compute_name(self):
