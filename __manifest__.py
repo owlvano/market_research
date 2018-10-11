@@ -33,6 +33,7 @@
         'views/price_measurement_views.xml',
         'views/tradepoint_order_views.xml',
         'views/market_research_technical_views.xml',
+        'report/price_report_views.xml',
     ],
 
 }
