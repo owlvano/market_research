@@ -19,3 +19,11 @@ class Product(models.Model):
     @api.model
     def _get_default_measurement_order(self):
         return self.env.context.get('default_measurement_order_id') or False
+
+    @api.multi
+    @api.onchange('product_id')
+    def get_last_product_price(self):
+        self.ensure_one()
+        if self.product_id:
+            self.price = self.search([('product_id','=',self.product_id.id)], order='create_date desc', limit=1).price or False
+        return False
