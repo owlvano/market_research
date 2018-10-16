@@ -14,20 +14,21 @@ class PriceReport(models.Model):
     client_id = fields.Many2one('res.partner', "Client", readonly=True)
     assigned_user_id = fields.Many2one('res.users', "Assigned User", readonly=True)
 
-    product_id = fields.Many2one('product.product', "Product", required=True)    
-    measured_price = fields.Float("Measured Price", readonly=True)
-    price_avg = fields.Float("Average Price", readonly=True)
+    product_id = fields.Many2one('product.product', "Product", readonly=True)    
+    measured_price = fields.Float("Measured Price", readonly=True, group_operator='avg')
+    
+    price = fields.Float("Own Price", readonly=True, group_operator='avg')
 
     def _select(self):
         select_str = """
          SELECT pm.id as id,
                 pm.measured_price as measured_price,
                 pm.create_date as date,
-                pm.product_id as product_id,
                 t.id as tradepoint_order_id,
                 t.assigned_user_id as assigned_user_id,
                 t.client_id as client_id,
-				avg(pm.measured_price) as price_avg
+                p.product_id as product_id,
+                p.price as price
         """ 
         return select_str
 
@@ -35,18 +36,20 @@ class PriceReport(models.Model):
         from_str = """
         		market_research_price_measurement pm
         			left join market_research_tradepoint_order t on (pm.tradepoint_order_id=t.id)
+                    left join market_research_product p on (pm.product_id=p.product_id)
         """
         return from_str
 
     def _group_by(self):
         group_by_str = """
            GROUP BY pm.id,
-           			pm.measured_price,
 					pm.create_date,
+                    pm.measured_price,                    
 					t.id,
 					t.assigned_user_id,
 					t.client_id,
-					pm.product_id
+                    p.id,
+                    p.price
         """
         return group_by_str
 
