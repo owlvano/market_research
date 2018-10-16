@@ -10,6 +10,7 @@
                 <field name="product_id"/>
                 <field name="price"/>
                 <field name="measurement_order_id"/>
+                <field name="create_date"/>
             </tree>
         </field>
     </record>
@@ -29,7 +30,10 @@
                         <group>
                             <field name="measurement_order_id" />
                             <field name="price" />
-                        </group>            
+                        </group> 
+                        <group>
+                            <field name="create_date" />
+                        </group> 
                     </group>
                 </sheet>
             </form>
