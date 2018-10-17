@@ -26,6 +26,17 @@
                     <field name="stage" widget="statusbar" statusbar_visible="draft,planned,completed"/>
                 </header>
                 <sheet string="Measurement Order">
+                    <div class="oe_button_box" name="button_box">
+                        <button class=" oe_stat_button"
+                            icon="fa-file-text"
+                            type="action"
+                            name="%(action_price_report_pivot)d"
+                            context="{'search_default_measurement_order_id': active_id}">
+                                <div class="o_stat_info o_form_field">
+                                    <span class="o_stat_text ">Price Report</span>
+                                </div>                                
+                        </button>
+                    </div>                    
                     <div class="oe_title">
                         <h1 class="o_row">
                             <field name="name" readonly="1"/>

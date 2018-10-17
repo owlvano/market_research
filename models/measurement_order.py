@@ -11,6 +11,7 @@ class MeasurementOrder(models.Model):
     name = fields.Char(string="Name", translate=True, track_visibility='always')
     responsible_id = fields.Many2one('res.users', string="Responsible User", track_visibility='always')
     default_assigned_user_id = fields.Many2one('res.users', string="Default Assigned User")
+    partner_id = fields.Many2one('res.partner', string="Partner", default=lambda self: self.env.user.company_id.id)
     deadline_date = fields.Date(string="Deadline")
     approval_date = fields.Date(string="Approval Date")
     stage = fields.Selection([
