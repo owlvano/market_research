@@ -24,7 +24,8 @@
     <record model="ir.actions.act_window" id="action_price_measurement_technical">
         <field name="name">Price Measurements</field>
         <field name="res_model">market.research.price.measurement</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="price_measurement_list_technical"/>
     </record>
 
     <!-- Top menu item -->

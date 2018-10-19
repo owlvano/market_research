@@ -7,6 +7,9 @@ class PriceMeasurement(models.Model):
     _description = _("Product Price Measurement")
 
     product_id = fields.Many2one('product.product', string="Product", required=True)
+    product_name = fields.Char(string="Product Name", related='product_id.name')
+    product_default_code = fields.Char(string="Internal Reference", related='product_id.default_code')
+
     measured_price = fields.Float(string="Measured Price")
 
     tradepoint_order_id = fields.Many2one('market.research.tradepoint.order', string="Tradepoint Order", default=lambda self: self._get_default_tradepoint_order())
