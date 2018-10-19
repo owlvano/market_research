@@ -17,7 +17,7 @@
         <field name="name">market.research.price.measurement form</field>
         <field name="model">market.research.price.measurement</field>
         <field name="arch" type="xml">
-            <form string="Price Measurements" create="false" edit="false">
+            <form string="Price Measurements" create="false">
                 <sheet>
                     <div class="oe_title">
                         <h1 class="o_row">
@@ -58,24 +58,11 @@
         </field>
     </record>
 
-    <!-- actions opening views on models -->
-        
     <record model="ir.actions.act_window" id="action_price_measurement">
         <field name="name">Price Measurements</field>
         <field name="res_model">market.research.price.measurement</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree</field>
     </record>
     
-    
-    <!-- menu categories -->
-        
-    <menuitem 
-        name="Price Measurements" 
-        id="menu_price_measurement" 
-        parent="menu_root"
-        sequence="40"
-        action="action_price_measurement"/> 
-   
-
   </data>
 </odoo>

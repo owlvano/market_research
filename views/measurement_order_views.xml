@@ -31,7 +31,8 @@
                             icon="fa-file-text"
                             type="action"
                             name="%(action_price_report_pivot)d"
-                            context="{'search_default_measurement_order_id': active_id}">
+                            context="{'search_default_measurement_order_id': active_id}"
+                            attrs="{'invisible': [('stage', 'not in', 'completed')]}">
                                 <div class="o_stat_info o_form_field">
                                     <span class="o_stat_text ">Price Report</span>
                                 </div>                                
@@ -50,7 +51,10 @@
                         <group>
                             <field name="default_assigned_user_id" attrs="{'readonly': [('stage', 'not in', 'draft')]}"/>
                             <field name="create_date" readonly="1" />
-                        </group>                    
+                        </group>
+                        <group>
+                            <field name="partner_id" groups="sales_team.group_sale_manager"/>
+                        </group>                              
                     </group>
                     <notebook>
                         <page name="tradepoint_page" string="Trade Points">
@@ -92,7 +96,6 @@
         <field name="res_model">market.research.measurement.order</field>
         <field name="view_mode">tree,form</field>
     </record>
-    
     
     <!-- menu categories -->
     

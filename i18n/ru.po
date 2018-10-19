@@ -126,7 +126,7 @@ msgstr "Черновик"
 #. module: market_research
 #: model:ir.ui.view,arch_db:market_research.tradepoint_order_form
 #: model:ir.ui.view,arch_db:market_research.tradepoint_order_list
-msgid "Fill Price Measurements"
+msgid "Fill Prices"
 msgstr "Заполнить цены"
 
 #. module: market_research
