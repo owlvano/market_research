@@ -17,50 +17,50 @@ class PriceReport(models.Model):
     product_id = fields.Many2one('product.product', "Product", readonly=True)    
 
 
-    def _query1(self):
+    def _query_price_measurements(self):
         query_str = """
-        SELECT pm.id as id,
-            pm.create_date as date,
-            pm.measured_price as measured_price,
-            t.assigned_user_id as assigned_user_id,
-            t.client_id as client_id,
-            p.product_id as product_id,
-            t.measurement_order_id as measurement_order_id
-        FROM (
-            market_research_price_measurement pm
-                left join market_research_tradepoint_order t on (pm.tradepoint_order_id=t.id)
-                left join market_research_product p on (pm.product_id=p.product_id)
-        )
-        GROUP BY pm.id,
-            pm.create_date,
-            pm.measured_price,
-            t.assigned_user_id,
-            t.client_id,
-            p.product_id,
-            t.measurement_order_id
+            SELECT
+                pm.create_date as date,
+                pm.measured_price as measured_price,
+                t.assigned_user_id as assigned_user_id,
+                t.client_id as client_id,
+                p.product_id as product_id,
+                t.measurement_order_id as measurement_order_id
+            FROM (
+                market_research_price_measurement pm
+                    left join market_research_tradepoint_order t on (pm.tradepoint_order_id=t.id)
+                    left join market_research_product p on (pm.product_id=p.product_id)
+            )
+            GROUP BY
+                pm.create_date,
+                pm.measured_price,
+                t.assigned_user_id,
+                t.client_id,
+                p.product_id,
+                t.measurement_order_id
         """ 
         return query_str
     
-    def _query2(self):
+    def _query_my_product_prices(self):
         query_str = """
-        SELECT p.id as id,
-            p.create_date as date,
-            p.price as measured_price,
-            m.responsible_id as assigned_user_id,
-            m.partner_id as client_id,
-            p.product_id as product_id,
-            m.id as measurement_order_id
-        FROM (
-            market_research_product p
-                left join market_research_measurement_order m on (p.measurement_order_id=m.id)
-        )
-        GROUP BY p.id,
-                p.create_date,
-                p.price,
-                m.responsible_id,
-                m.partner_id,
-                p.product_id,
-                m.id
+            SELECT
+                p.create_date as date,
+                p.price as measured_price,
+                m.responsible_id as assigned_user_id,
+                m.partner_id as client_id,
+                p.product_id as product_id,
+                m.id as measurement_order_id
+            FROM (
+                market_research_product p
+                    left join market_research_measurement_order m on (p.measurement_order_id=m.id)
+            )
+            GROUP BY 
+                    p.create_date,
+                    p.price,
+                    m.responsible_id,
+                    m.partner_id,
+                    p.product_id,
+                    m.id
         """
         return query_str   
     
@@ -69,9 +69,18 @@ class PriceReport(models.Model):
         # self._table = price_report
         tools.drop_view_if_exists(self.env.cr, self._table)
         self.env.cr.execute("""CREATE or REPLACE VIEW %s as (
-            %s
-            UNION
-            %s
+            WITH result AS(
+                WITH price_measurements AS (
+                        %s
+                    ), product_prices AS (
+                        %s
+                    )
+                SELECT * FROM price_measurements
+                UNION
+                SELECT * FROM product_prices
+                )
+            SELECT row_number() OVER () AS id, * 
+            FROM  result
             )
-            """ % (self._table, self._query1(), self._query2()))
+            """ % (self._table, self._query_price_measurements(), self._query_my_product_prices()))
 
