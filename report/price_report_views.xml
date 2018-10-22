@@ -16,7 +16,7 @@
         <field name="name">price.report.graph</field>
         <field name="model">price.report</field>
         <field name="arch" type="xml">
-            <graph string="Prices Analysis" grouped="True">
+            <graph string="Prices Analysis" stacked="False">
                 <field name="date" type="row" interval="day"/>
                 <field name="measured_price" type="measure"/>
             </graph>
@@ -68,6 +68,7 @@
             <field name="res_model">price.report</field>
             <field name="view_type">form</field>
             <field name="view_mode">graph</field>
+            <field name="context">{'group_by':['date:day','client_id']}</field>
             <field name="view_id"></field>  <!-- force empty -->
         <!--         <field name="search_view_id" ref="view_order_product_search"/> -->
         </record>
@@ -79,5 +80,22 @@
             <field name="view_mode">pivot,tree</field>
             <field name="view_id"></field>
         </record>
+
+        <!-- Top menu item -->
+    
+
+        <menuitem 
+            name="Market Research" 
+            id="menu_price_report_root"
+            parent="sales_team.menu_sale_report"
+            sequence="90"/>
+
+        <menuitem 
+            name="Prices Dynamics" 
+            id="menu_price_report_graph"
+            parent="menu_price_report_root"
+            action="action_price_report_graph_wizard"
+            sequence="90"/>
+
     </data>
 </odoo>    

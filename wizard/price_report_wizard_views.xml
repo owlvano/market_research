@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        
+        <record id="price_report_wizard_form" model="ir.ui.view">
+            <field name="name">price.report.wizard.form</field>
+            <field name="model">price.report.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                        </group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button 
+                            type="object" 
+                            name="do_search" 
+                            string="Search"
+                            attrs="{'invisible':
+                            [('product_id', '=', False),
+                            ('date_from', '=', False),
+                            ('date_to', '=', False)]}" />
+                        <button special="cancel" string="Cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window 
+            id="action_price_report_graph_wizard"
+            name="Search by Period and Product"
+            src_model="price.report"
+            res_model="price.report.wizard"
+            view_mode="form"
+            target="new" />
+
+    </data>
+</odoo>    
