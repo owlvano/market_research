@@ -18,6 +18,11 @@ class TradepointOrder(models.Model):
     price_measurement_ids = fields.One2many('market.research.price.measurement', 'tradepoint_order_id', string="Price Measurements")
     progress = fields.Float(string="Progress", compute='_compute_progress')
 
+    _sql_constraints = [
+        ('tradepoint_order_unique',
+         'CHECK(1=1)',
+         _('Clients must be unique for the measurement order!'))]
+
     @api.constrains('measurement_order_id', 'client_id')
     def _check_description(self):
         self.ensure_one()

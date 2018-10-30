@@ -12,6 +12,11 @@ class Product(models.Model):
 
     measurement_order_id = fields.Many2one('market.research.measurement.order', string="Measurement Order", default=lambda self: self._get_default_measurement_order())
 
+    _sql_constraints = [
+        ('product_unique',
+         'CHECK (1=1)',
+         _('Products must be unique for the measurement order!'))]  #manual SQL constraint removal (in a separate branch)
+
     @api.constrains('measurement_order_id', 'product_id')
     def _check_description(self):
         self.ensure_one()
