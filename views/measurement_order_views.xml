@@ -9,6 +9,7 @@
             <tree>
                 <field name="name" readonly="1"/>
                 <field name="responsible_id"/>
+                <field name="stage"/>
                 <field name="deadline_date"/>
             </tree>
         </field>
