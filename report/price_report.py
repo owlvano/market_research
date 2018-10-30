@@ -68,8 +68,8 @@ class PriceReport(models.Model):
     def init(self):
         # self._table = price_report
         tools.drop_view_if_exists(self.env.cr, self._table)
-        self.env.cr.execute("""CREATE or REPLACE VIEW %s as (
-            WITH result AS(
+        self.env.cr.execute("""CREATE OR REPLACE VIEW %s AS (
+            WITH result AS (
                 WITH price_measurements AS (
                         %s
                     ), product_prices AS (

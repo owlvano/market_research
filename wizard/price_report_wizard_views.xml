@@ -33,7 +33,6 @@
         <act_window 
             id="action_price_report_graph_wizard"
             name="Search by Period and Product"
-            src_model="price.report"
             res_model="price.report.wizard"
             view_mode="form"
             target="new" />

@@ -1,4 +1,3 @@
-from odoo import tools
 from odoo import api, fields, models
 from odoo.fields import Date
 
