@@ -13,12 +13,6 @@ class TradepointOrder(models.Model):
 
     name = fields.Char(string="Address", compute='_compute_name', store=True)
     deadline_date = fields.Date(string="Deadline", related='measurement_order_id.deadline_date')
-    stage = fields.Selection([
-        ('draft', 'Draft'), 
-        ('planned', 'In Progress'), 
-        ('completed', 'Completed'), 
-        ('cancelled', 'Cancelled')
-        ], default=lambda self: self._get_default_stage(), track_visibility='onchange')
 
     price_measurement_ids = fields.One2many('market.research.price.measurement', 'tradepoint_order_id', string="Price Measurements")
     progress = fields.Float(string="Progress", compute='_compute_progress')
@@ -47,7 +41,3 @@ class TradepointOrder(models.Model):
     @api.model
     def _get_default_user_id(self):
         return self.env.context.get('default_assigned_user_id') or False
-
-    @api.model
-    def _get_default_stage(self):
-        return self.env.context.get('default_stage') or 'draft'
