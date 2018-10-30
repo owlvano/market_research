@@ -88,12 +88,42 @@
         </field>
     </record>
 
+    <!-- kanban view definition -->
+
+    <record id="measurement_order_kanban" model="ir.ui.view">
+        <field name="name">market.research.measurement.order kanban</field>
+        <field name="model">market.research.measurement.order</field>
+        <field name="arch" type="xml">
+            <kanban class="o_res_partner_kanban" default_group_by="stage">
+                <field name="name"/>
+                <field name="responsible_id"/>
+                <field name="deadline_date"/>
+                <field name="stage"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_res_partner_kanban">
+                            <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                            <div class="oe_kanban_details">
+                                <strong class="oe_partner_heading"><field name="name"/></strong>
+                                <ul>
+                                    <li t-if="record.responsible_id.raw_value">Responsible: <field name="responsible_id"/></li>
+                                    <li t-if="record.deadline_date.raw_value">Deadline: <field name="deadline_date"/></li>
+                                </ul>
+                            <div class="oe_kanban_partner_links"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
     <!-- actions opening views on models -->
     
     <record model="ir.actions.act_window" id="action_measurement_order">
         <field name="name">Measurement Orders</field>
         <field name="res_model">market.research.measurement.order</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,kanban,form</field>
     </record>
     
     <!-- menu categories -->
