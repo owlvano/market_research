@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 class Product(models.Model):
     _name = 'market.research.product'
@@ -11,10 +12,12 @@ class Product(models.Model):
 
     measurement_order_id = fields.Many2one('market.research.measurement.order', string="Measurement Order", default=lambda self: self._get_default_measurement_order())
 
-    _sql_constraints = [
-        ('product_unique',
-         'UNIQUE (measurement_order_id, product_id)',
-         _('Products must be unique for the measurement order!'))]
+    @api.constrains('measurement_order_id', 'product_id')
+    def _check_description(self):
+        self.ensure_one()
+        record_count = self.env['market.research.product'].search_count([('measurement_order_id', '=', self.measurement_order_id.id), ('product_id', '=', self.product_id.id)])
+        if record_count > 1:
+            raise ValidationError(_('Product "%s" should be unique for this measurement order') % (self.product_id.display_name))
 
     @api.model
     def _get_default_measurement_order(self):

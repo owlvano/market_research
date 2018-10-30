@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 class TradepointOrder(models.Model):
     _name = 'market.research.tradepoint.order'
@@ -16,10 +17,13 @@ class TradepointOrder(models.Model):
 
     price_measurement_ids = fields.One2many('market.research.price.measurement', 'tradepoint_order_id', string="Price Measurements")
     progress = fields.Float(string="Progress", compute='_compute_progress')
-    _sql_constraints = [
-        ('tradepoint_order_unique',
-         'UNIQUE (measurement_order_id, client_id)',
-         _('Clients must be unique for the measurement order!'))]
+
+    @api.constrains('measurement_order_id', 'client_id')
+    def _check_description(self):
+        self.ensure_one()
+        record_count = self.env['market.research.tradepoint.order'].search_count([('measurement_order_id', '=', self.measurement_order_id.id), ('client_id', '=', self.client_id.id)])
+        if record_count > 1:
+            raise ValidationError(_('Tradepoint Order on client "%s" should be unique for this measurement order') % (self.client_id.display_name))
 
     @api.depends('client_id')
     def _compute_name(self):
