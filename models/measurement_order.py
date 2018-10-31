@@ -39,6 +39,7 @@ class MeasurementOrder(models.Model):
         for tradepoint_id in self.tradepoint_order_ids:
             for product_id in self.product_ids:
                 self.env['market.research.price.measurement'].create({'tradepoint_order_id': tradepoint_id.id, 'product_id': product_id.product_id.id})
+            tradepoint_id.write({'stage': 'planned'})
         self.write({'stage': 'planned'})
         return True
 
