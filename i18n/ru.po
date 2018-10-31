@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0-20180710\n"
+"Project-Id-Version: Odoo Server 10.0-20181019\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-10 07:40+0000\n"
-"PO-Revision-Date: 2018-10-10 07:40+0000\n"
+"POT-Creation-Date: 2018-10-31 08:52+0000\n"
+"PO-Revision-Date: 2018-10-31 08:52+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,16 +16,26 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: market_research
-#: code:addons/market_research/models/tradepoint_order.py:33
+#: code:addons/market_research/models/tradepoint_order.py:37
 #, python-format
 msgid "#%d on %s"
 msgstr "#%d на %s"
 
 #. module: market_research
-#: code:addons/market_research/models/measurement_order.py:30
+#: code:addons/market_research/models/measurement_order.py:31
 #, python-format
 msgid "#%d since %s"
 msgstr "#%d с %s"
+
+#. module: market_research
+#: model:ir.ui.view,arch_db:market_research.tradepoint_order_form
+msgid "<span class=\"o_stat_text \">Fill Prices</span>"
+msgstr "<span class=\"o_stat_text \">Заполнить</span>"
+
+#. module: market_research
+#: model:ir.ui.view,arch_db:market_research.measurement_order_form
+msgid "<span class=\"o_stat_text \">Price Report</span>"
+msgstr "<span class=\"o_stat_text \">Отчет</span>"
 
 #. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_name
@@ -45,15 +55,18 @@ msgstr "Запланировать"
 #. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_assigned_user_id
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_assigned_user_id
+#: model:ir.model.fields,field_description:market_research.field_price_report_assigned_user_id
 #: model:ir.ui.view,arch_db:market_research.price_measurement_search
+#: model:ir.ui.view,arch_db:market_research.price_report_search
 #: model:ir.ui.view,arch_db:market_research.tradepoint_order_search
 msgid "Assigned User"
 msgstr "Ответственный Пользователь"
 
 #. module: market_research
 #: model:ir.ui.view,arch_db:market_research.measurement_order_form
+#: model:ir.ui.view,arch_db:market_research.price_report_wizard_form
 msgid "Cancel"
-msgstr "Отменить"
+msgstr "Отмена"
 
 #. module: market_research
 #: selection:market.research.measurement.order,stage:0
@@ -64,17 +77,12 @@ msgstr "Отменено"
 #. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_client_id
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_client_id
+#: model:ir.model.fields,field_description:market_research.field_price_report_client_id
 #: model:ir.ui.view,arch_db:market_research.price_measurement_search
+#: model:ir.ui.view,arch_db:market_research.price_report_search
 #: model:ir.ui.view,arch_db:market_research.tradepoint_order_search
 msgid "Client"
 msgstr "Клиент"
-
-#. module: market_research
-#: code:addons/market_research/models/tradepoint_order.py:28
-#: sql_constraint:market.research.tradepoint.order:0
-#, python-format
-msgid "Clients must be unique for the measurement order!"
-msgstr "Клиент должен быть уникален для заявки на замер цен!"
 
 #. module: market_research
 #: selection:market.research.measurement.order,stage:0
@@ -83,10 +91,16 @@ msgid "Completed"
 msgstr "Завершено"
 
 #. module: market_research
+#: model:ir.model.fields,field_description:market_research.field_price_report_date
+msgid "Create Date"
+msgstr "Дата создания"
+
+#. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_measurement_order_create_uid
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_create_uid
 #: model:ir.model.fields,field_description:market_research.field_market_research_product_create_uid
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_create_uid
+#: model:ir.model.fields,field_description:market_research.field_price_report_wizard_create_uid
 msgid "Created by"
 msgstr "Создал"
 
@@ -95,14 +109,35 @@ msgstr "Создал"
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_create_date
 #: model:ir.model.fields,field_description:market_research.field_market_research_product_create_date
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_create_date
+#: model:ir.model.fields,field_description:market_research.field_price_report_wizard_create_date
 msgid "Created on"
 msgstr "Создано"
+
+#. module: market_research
+#: model:ir.model.fields,field_description:market_research.field_price_report_wizard_date_from
+msgid "Date From"
+msgstr "Дата (От)"
+
+#. module: market_research
+#: model:ir.model.fields,field_description:market_research.field_price_report_wizard_date_to
+msgid "Date To"
+msgstr "Дата (До)"
+
+#. module: market_research
+#: model:ir.ui.view,arch_db:market_research.price_report_search
+msgid "Day"
+msgstr "День"
 
 #. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_measurement_order_deadline_date
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_deadline_date
 msgid "Deadline"
-msgstr "Окончить до"
+msgstr "Срок"
+
+#. module: market_research
+#: model:ir.ui.view,arch_db:market_research.measurement_order_kanban
+msgid "Deadline:"
+msgstr "Срок:"
 
 #. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_measurement_order_default_assigned_user_id
@@ -114,6 +149,8 @@ msgstr "Ответственный по умолчанию"
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_display_name
 #: model:ir.model.fields,field_description:market_research.field_market_research_product_display_name
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_display_name
+#: model:ir.model.fields,field_description:market_research.field_price_report_display_name
+#: model:ir.model.fields,field_description:market_research.field_price_report_wizard_display_name
 msgid "Display Name"
 msgstr "Отображаемое имя"
 
@@ -124,7 +161,6 @@ msgid "Draft"
 msgstr "Черновик"
 
 #. module: market_research
-#: model:ir.ui.view,arch_db:market_research.tradepoint_order_form
 #: model:ir.ui.view,arch_db:market_research.tradepoint_order_list
 msgid "Fill Prices"
 msgstr "Заполнить цены"
@@ -136,10 +172,17 @@ msgid "Group By"
 msgstr "Группировать"
 
 #. module: market_research
+#: model:ir.ui.view,arch_db:market_research.price_report_search
+msgid "Group By Day"
+msgstr "Группировать по дням"
+
+#. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_measurement_order_id
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_id
 #: model:ir.model.fields,field_description:market_research.field_market_research_product_id
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_id
+#: model:ir.model.fields,field_description:market_research.field_price_report_id
+#: model:ir.model.fields,field_description:market_research.field_price_report_wizard_id
 msgid "ID"
 msgstr "ID"
 
@@ -153,6 +196,8 @@ msgstr "В прогрессе"
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement___last_update
 #: model:ir.model.fields,field_description:market_research.field_market_research_product___last_update
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order___last_update
+#: model:ir.model.fields,field_description:market_research.field_price_report___last_update
+#: model:ir.model.fields,field_description:market_research.field_price_report_wizard___last_update
 msgid "Last Modified on"
 msgstr "Последний раз изменено"
 
@@ -161,6 +206,7 @@ msgstr "Последний раз изменено"
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_write_uid
 #: model:ir.model.fields,field_description:market_research.field_market_research_product_write_uid
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_write_uid
+#: model:ir.model.fields,field_description:market_research.field_price_report_wizard_write_uid
 msgid "Last Updated by"
 msgstr "Последний раз обновил"
 
@@ -169,6 +215,7 @@ msgstr "Последний раз обновил"
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_write_date
 #: model:ir.model.fields,field_description:market_research.field_market_research_product_write_date
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_write_date
+#: model:ir.model.fields,field_description:market_research.field_price_report_wizard_write_date
 msgid "Last Updated on"
 msgstr "Последний раз обновлено"
 
@@ -178,6 +225,7 @@ msgid "Mark as Done"
 msgstr "Отметить сделанным"
 
 #. module: market_research
+#: model:ir.ui.menu,name:market_research.menu_price_report_root
 #: model:ir.ui.menu,name:market_research.menu_root
 #: model:ir.ui.menu,name:market_research.menu_technical
 msgid "Market Research"
@@ -185,6 +233,7 @@ msgstr "Исследование рынка"
 
 #. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_measured_price
+#: model:ir.model.fields,field_description:market_research.field_price_report_measured_price
 msgid "Measured Price"
 msgstr "Цена"
 
@@ -193,6 +242,7 @@ msgstr "Цена"
 #: model:ir.model,name:market_research.model_market_research_measurement_order
 #: model:ir.model.fields,field_description:market_research.field_market_research_product_measurement_order_id
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_measurement_order_id
+#: model:ir.model.fields,field_description:market_research.field_price_report_measurement_order_id
 #: model:ir.ui.view,arch_db:market_research.measurement_order_form
 #, python-format
 msgid "Measurement Order"
@@ -207,6 +257,11 @@ msgid "Measurement Orders"
 msgstr "Заявки на замер цен"
 
 #. module: market_research
+#: model:ir.ui.view,arch_db:market_research.price_report_search
+msgid "Month"
+msgstr "Месяц"
+
+#. module: market_research
 #: model:ir.ui.view,arch_db:market_research.tradepoint_order_search
 msgid "My Orders"
 msgstr "Мои заказы"
@@ -217,6 +272,11 @@ msgid "Name"
 msgstr "Имя"
 
 #. module: market_research
+#: model:ir.model.fields,field_description:market_research.field_market_research_measurement_order_partner_id
+msgid "Partner"
+msgstr "Партнёр"
+
+#. module: market_research
 #: selection:market.research.measurement.order,stage:0
 msgid "Planned"
 msgstr "Запланировано"
@@ -224,13 +284,12 @@ msgstr "Запланировано"
 #. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_product_price
 msgid "Price"
-msgstr "Цена собственная"
+msgstr "Цена"
 
 #. module: market_research
 #: model:ir.actions.act_window,name:market_research.action_price_measurement
 #: model:ir.actions.act_window,name:market_research.action_price_measurement_technical
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_price_measurement_ids
-#: model:ir.ui.menu,name:market_research.menu_price_measurement
 #: model:ir.ui.menu,name:market_research.menu_price_measurement_technical
 #: model:ir.ui.view,arch_db:market_research.price_measurement_form
 #: model:ir.ui.view,arch_db:market_research.tradepoint_order_form
@@ -238,10 +297,49 @@ msgid "Price Measurements"
 msgstr "Замеры цен"
 
 #. module: market_research
+#: model:ir.model,name:market_research.model_price_report
+msgid "Price Measurements Statistics"
+msgstr "Статистика по замерам цен"
+
+#. module: market_research
+#: model:ir.model,name:market_research.model_price_report_wizard
+msgid "Price Report Wizard"
+msgstr "Price Report Wizard"
+
+#. module: market_research
+#: model:ir.actions.act_window,name:market_research.action_price_report_graph
+#: model:ir.actions.act_window,name:market_research.action_price_report_pivot
+#: model:ir.ui.view,arch_db:market_research.price_report_graph
+#: model:ir.ui.view,arch_db:market_research.price_report_pivot
+#: model:ir.ui.view,arch_db:market_research.price_report_search
+#: model:ir.ui.view,arch_db:market_research.price_report_tree
+msgid "Prices Analysis"
+msgstr "Анализ цен"
+
+#. module: market_research
+#: model:ir.ui.menu,name:market_research.menu_price_report_graph
+msgid "Prices Dynamics"
+msgstr "Динамика цен"
+
+#. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_product_id
 #: model:ir.model.fields,field_description:market_research.field_market_research_product_product_id
+#: model:ir.model.fields,field_description:market_research.field_price_report_product_id
+#: model:ir.model.fields,field_description:market_research.field_price_report_wizard_product_id
+#: model:ir.ui.view,arch_db:market_research.price_report_search
 msgid "Product"
 msgstr "Продукт"
+
+#. module: market_research
+#: code:addons/market_research/models/product.py:20
+#, python-format
+msgid "Product \"%s\" should be unique for this measurement order"
+msgstr "Продукт \"%s\" должен быть уникален для этой заявки"
+
+#. module: market_research
+#: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_product_name
+msgid "Product Name"
+msgstr "Название продукта"
 
 #. module: market_research
 #: code:addons/market_research/models/price_measurement.py:7
@@ -251,17 +349,15 @@ msgid "Product Price Measurement"
 msgstr "Замер цены продукта"
 
 #. module: market_research
-#: code:addons/market_research/models/price_measurement.py:19
+#: code:addons/market_research/models/price_measurement.py:21
 #: sql_constraint:market.research.price.measurement:0
 #, python-format
 msgid "Product measurement must be unique for the tradepoint!"
 msgstr "Замер цены должен быть уникальным для торговой точки!"
 
 #. module: market_research
-#: model:ir.actions.act_window,name:market_research.action_product
 #: model:ir.actions.act_window,name:market_research.action_product_technical
 #: model:ir.model.fields,field_description:market_research.field_market_research_measurement_order_product_ids
-#: model:ir.ui.menu,name:market_research.menu_product
 #: model:ir.ui.menu,name:market_research.menu_product_technical
 #: model:ir.ui.view,arch_db:market_research.measurement_order_form
 #: model:ir.ui.view,arch_db:market_research.product_form
@@ -269,19 +365,17 @@ msgid "Products"
 msgstr "Продукция"
 
 #. module: market_research
-#: code:addons/market_research/models/product.py:17
-#: sql_constraint:market.research.product:0
-#, python-format
-msgid "Products must be unique for the measurement order!"
-msgstr "Продукты должны быть уникальны для заявки на замер цен!"
-
-#. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_progress
 msgid "Progress"
 msgstr "Прогресс"
 
 #. module: market_research
-#: code:addons/market_research/models/product.py:7
+#: model:ir.ui.view,arch_db:market_research.price_report_search
+msgid "Quarter"
+msgstr "Квартал"
+
+#. module: market_research
+#: code:addons/market_research/models/product.py:8
 #: model:ir.model,name:market_research.model_market_research_product
 #, python-format
 msgid "Researched Product"
@@ -291,6 +385,21 @@ msgstr "Измеряемый продукт"
 #: model:ir.model.fields,field_description:market_research.field_market_research_measurement_order_responsible_id
 msgid "Responsible User"
 msgstr "Ответственный"
+
+#. module: market_research
+#: model:ir.ui.view,arch_db:market_research.measurement_order_kanban
+msgid "Responsible:"
+msgstr "Ответственный:"
+
+#. module: market_research
+#: model:ir.ui.view,arch_db:market_research.price_report_wizard_form
+msgid "Search"
+msgstr "Поиск"
+
+#. module: market_research
+#: model:ir.actions.act_window,name:market_research.action_price_report_graph_wizard
+msgid "Search by Period and Product"
+msgstr "Поиск по периоду и продукту"
 
 #. module: market_research
 #: model:ir.model.fields,field_description:market_research.field_market_research_measurement_order_stage
@@ -305,7 +414,7 @@ msgid "Trade Points"
 msgstr "Торговые точки"
 
 #. module: market_research
-#: code:addons/market_research/models/tradepoint_order.py:8
+#: code:addons/market_research/models/tradepoint_order.py:9
 #: model:ir.model,name:market_research.model_market_research_tradepoint_order
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_tradepoint_order_id
 #: model:ir.ui.view,arch_db:market_research.price_measurement_search
@@ -313,6 +422,12 @@ msgstr "Торговые точки"
 #, python-format
 msgid "Tradepoint Order"
 msgstr "Заявка на торговую точку"
+
+#. module: market_research
+#: code:addons/market_research/models/tradepoint_order.py:32
+#, python-format
+msgid "Tradepoint Order on client \"%s\" should be unique for this measurement order"
+msgstr "Торговая точка \"%s\" должна быть уникальной для этой заявки"
 
 #. module: market_research
 #: model:ir.actions.act_window,name:market_research.action_tradepoint_order
@@ -323,7 +438,12 @@ msgid "Tradepoint Orders"
 msgstr "Заявки на торговые точки"
 
 #. module: market_research
-#: model:ir.model,name:market_research.model_price_wizard
-msgid "price.wizard"
-msgstr "price.wizard"
+#: model:ir.ui.view,arch_db:market_research.price_report_search
+msgid "Week"
+msgstr "Неделя"
+
+#. module: market_research
+#: model:ir.ui.view,arch_db:market_research.price_report_search
+msgid "Year"
+msgstr "Год"
 
