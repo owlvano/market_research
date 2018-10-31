@@ -46,13 +46,15 @@ class MeasurementOrder(models.Model):
     @api.multi
     def action_complete(self):
         self.ensure_one()
-
+        for tradepoint_id in self.tradepoint_order_ids:
+            tradepoint_id.write({'stage': 'completed'})
         self.write({'stage': 'completed'})
         return True
 
     @api.multi
     def action_cancel(self):
         self.ensure_one()
-
+        for tradepoint_id in self.tradepoint_order_ids:
+            tradepoint_id.write({'stage': 'cancelled'})
         self.write({'stage': 'cancelled'})
         return True        
