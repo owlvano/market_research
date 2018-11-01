@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0-20181019\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-31 08:52+0000\n"
-"PO-Revision-Date: 2018-10-31 08:52+0000\n"
+"POT-Creation-Date: 2018-11-01 11:05+0000\n"
+"PO-Revision-Date: 2018-11-01 11:05+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -136,6 +136,7 @@ msgstr "Срок"
 
 #. module: market_research
 #: model:ir.ui.view,arch_db:market_research.measurement_order_kanban
+#: model:ir.ui.view,arch_db:market_research.tradepoint_order_kanban
 msgid "Deadline:"
 msgstr "Срок:"
 
@@ -239,7 +240,6 @@ msgstr "Цена"
 
 #. module: market_research
 #: code:addons/market_research/models/measurement_order.py:9
-#: model:ir.model,name:market_research.model_market_research_measurement_order
 #: model:ir.model.fields,field_description:market_research.field_market_research_product_measurement_order_id
 #: model:ir.model.fields,field_description:market_research.field_market_research_tradepoint_order_measurement_order_id
 #: model:ir.model.fields,field_description:market_research.field_price_report_measurement_order_id
@@ -343,14 +343,12 @@ msgstr "Название продукта"
 
 #. module: market_research
 #: code:addons/market_research/models/price_measurement.py:7
-#: model:ir.model,name:market_research.model_market_research_price_measurement
 #, python-format
 msgid "Product Price Measurement"
 msgstr "Замер цены продукта"
 
 #. module: market_research
 #: code:addons/market_research/models/price_measurement.py:21
-#: sql_constraint:market.research.price.measurement:0
 #, python-format
 msgid "Product measurement must be unique for the tradepoint!"
 msgstr "Замер цены должен быть уникальным для торговой точки!"
@@ -376,7 +374,6 @@ msgstr "Квартал"
 
 #. module: market_research
 #: code:addons/market_research/models/product.py:8
-#: model:ir.model,name:market_research.model_market_research_product
 #, python-format
 msgid "Researched Product"
 msgstr "Измеряемый продукт"
@@ -388,6 +385,7 @@ msgstr "Ответственный"
 
 #. module: market_research
 #: model:ir.ui.view,arch_db:market_research.measurement_order_kanban
+#: model:ir.ui.view,arch_db:market_research.tradepoint_order_kanban
 msgid "Responsible:"
 msgstr "Ответственный:"
 
@@ -415,7 +413,6 @@ msgstr "Торговые точки"
 
 #. module: market_research
 #: code:addons/market_research/models/tradepoint_order.py:9
-#: model:ir.model,name:market_research.model_market_research_tradepoint_order
 #: model:ir.model.fields,field_description:market_research.field_market_research_price_measurement_tradepoint_order_id
 #: model:ir.ui.view,arch_db:market_research.price_measurement_search
 #: model:ir.ui.view,arch_db:market_research.tradepoint_order_form
