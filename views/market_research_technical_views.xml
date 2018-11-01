@@ -6,13 +6,13 @@
     <record model="ir.actions.act_window" id="action_measurement_order_technical">
         <field name="name">Measurement Orders</field>
         <field name="res_model">market.research.measurement.order</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
     <record model="ir.actions.act_window" id="action_tradepoint_order_technical">
         <field name="name">Tradepoint Orders</field>
         <field name="res_model">market.research.tradepoint.order</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
     <record model="ir.actions.act_window" id="action_product_technical">

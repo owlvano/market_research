@@ -11,7 +11,6 @@
                 <field name="client_id"/>
                 <field name="deadline_date"/>
                 <field name="measurement_order_id"/>
-                <field name="stage"/>
                 <field name="progress" widget="progressbar"/>
                 <button class="oe_stat_button" 
                         type="action"
