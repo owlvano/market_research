@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0-20181019\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-31 08:52+0000\n"
-"PO-Revision-Date: 2018-10-31 08:52+0000\n"
+"POT-Creation-Date: 2018-11-01 10:58+0000\n"
+"PO-Revision-Date: 2018-11-01 10:58+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -136,6 +136,7 @@ msgstr "Срок"
 
 #. module: market_research
 #: model:ir.ui.view,arch_db:market_research.measurement_order_kanban
+#: model:ir.ui.view,arch_db:market_research.tradepoint_order_kanban
 msgid "Deadline:"
 msgstr "Срок:"
 
@@ -388,6 +389,7 @@ msgstr "Ответственный"
 
 #. module: market_research
 #: model:ir.ui.view,arch_db:market_research.measurement_order_kanban
+#: model:ir.ui.view,arch_db:market_research.tradepoint_order_kanban
 msgid "Responsible:"
 msgstr "Ответственный:"
 
