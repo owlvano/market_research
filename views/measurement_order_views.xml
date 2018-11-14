@@ -24,6 +24,7 @@
                     <button name="action_assign" type="object" string="Assign Orders" attrs="{'invisible': [('stage', 'not in', 'draft')]}"/>
                     <button name="action_complete" type="object" string="Mark as Done" attrs="{'invisible': [('stage', 'not in', 'planned')]}"/>
                     <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': [('stage', 'not in', 'planned')]}"/>
+                    <button name="copy_into_draft" type="object" class="btn-primary" string="Copy to draft"/>
                     <field name="stage" widget="statusbar" statusbar_visible="draft,planned,completed"/>
                 </header>
                 <sheet string="Measurement Order">

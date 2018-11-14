@@ -58,4 +58,29 @@ class MeasurementOrder(models.Model):
         for tradepoint_id in self.tradepoint_order_ids:
             tradepoint_id.write({'stage': 'cancelled'})
         self.write({'stage': 'cancelled'})
-        return True        
+        return True
+
+    @api.multi
+    def copy_into_draft(self):
+        self.ensure_one()
+        # Create base record copy
+        draft_record = self.env['market.research.measurement.order'].create({
+            'responsible_id': self.responsible_id.id, 
+            'default_assigned_user_id': self.default_assigned_user_id.id
+        })
+        # Add tradepoint orders and product records
+        for tradepoint_id in self.tradepoint_order_ids:
+            self.env['market.research.tradepoint.order'].create({
+                'measurement_order_id': draft_record.id,
+                'client_id': tradepoint_id.client_id.id,
+                'assigned_user_id': tradepoint_id.assigned_user_id.id
+            })
+        for product_id in self.product_ids:
+            self.env['market.research.product'].create({
+                'measurement_order_id': draft_record.id,
+                'product_id': product_id.product_id.id,
+                'price': product_id.price
+            })
+        # Navigate to the created draft
+
+        return True
