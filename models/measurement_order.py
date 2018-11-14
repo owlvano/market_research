@@ -83,5 +83,9 @@ class MeasurementOrder(models.Model):
                 'price': product_id.price
             })
         # Navigate to the created draft
-
-        return True
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'market.research.measurement.order',
+            'view_mode': 'form',
+            'res_id': draft_record.id
+        }
