@@ -27,11 +27,12 @@ class MeasurementOrder(models.Model):
     @api.model
     def create(self, vals):
         record = super(MeasurementOrder, self).create(vals)
-        
-        record.name = _("#%d since %s") % (record.id, Date.from_string(record.create_date).strftime("%d.%m.%Y"))
+
+        if not record.name:
+            record.name = _("#%d since %s") % (record.id, Date.from_string(record.create_date).strftime("%d.%m.%Y"))
 
         return record
-           
+
     @api.multi
     def action_assign(self):
         self.ensure_one()
