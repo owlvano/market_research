@@ -25,10 +25,10 @@ class PriceMeasurement(models.Model):
         return self.env.context.get('default_tradepoint_order_id') or False
 
     @api.model
-    def create(self, values):
-        record = super(PriceMeasurement, self).create(values)
+    def create(self, vals):
+        record = super(PriceMeasurement, self).create(vals)
 
-        record.product_id = values['product_id']
-        record.tradepoint_order_id = values['tradepoint_order_id']  
+        record.product_id = vals['product_id']
+        record.tradepoint_order_id = vals['tradepoint_order_id']  
         
         return record
