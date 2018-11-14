@@ -65,6 +65,7 @@ class MeasurementOrder(models.Model):
         self.ensure_one()
         # Create base record copy
         draft_record = self.env['market.research.measurement.order'].create({
+            'name': _("Copy of %s") % self.name, 
             'responsible_id': self.responsible_id.id, 
             'default_assigned_user_id': self.default_assigned_user_id.id
         })
