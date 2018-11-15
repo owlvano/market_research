@@ -8,7 +8,7 @@ class MeasurementOrder(models.Model):
     _inherit = ['mail.thread']
     _description = _("Measurement Order")
 
-    name = fields.Char(string="Name", translate=True, track_visibility='always')
+    name = fields.Char(string="Name", translate=True, required=True, track_visibility='always')
     responsible_id = fields.Many2one('res.users', string="Responsible User", track_visibility='always')
     default_assigned_user_id = fields.Many2one('res.users', string="Default Assigned User")
     partner_id = fields.Many2one('res.partner', string="Partner", default=lambda self: self.env.user.company_id.id)
@@ -23,16 +23,34 @@ class MeasurementOrder(models.Model):
 
     tradepoint_order_ids = fields.One2many('market.research.tradepoint.order', 'measurement_order_id', string="Trade Points")
     product_ids = fields.One2many('market.research.product', 'measurement_order_id', string="Products")
-
+    
     @api.model
     def create(self, vals):
         record = super(MeasurementOrder, self).create(vals)
 
-        if not record.name:
-            record.name = _("#%d since %s") % (record.id, Date.from_string(record.create_date).strftime("%d.%m.%Y"))
-
         return record
 
+    @api.model
+    def date_format(self, date):
+        return Date.from_string(date).strftime("%d.%m.%Y")
+
+    @api.model
+    def name_get(self):
+        def name_compute(ord):
+            return (ord.id, ' '.join([ord.name_prefix_compute(), ord.name]))
+        
+        result = []
+
+        for order in self.sudo():
+            result.append(name_compute(order))
+
+        return result
+    
+    @api.multi
+    def name_prefix_compute(self):
+        for record in self:
+            return  _("(#%s - %s)") % (record.id, self.date_format(record.create_date))
+    
     @api.multi
     def action_assign(self):
         self.ensure_one()
@@ -65,8 +83,8 @@ class MeasurementOrder(models.Model):
         self.ensure_one()
         # Create base record copy
         draft_record = self.env['market.research.measurement.order'].create({
-            'name': _("Copy of %s") % self.name, 
-            'responsible_id': self.responsible_id.id, 
+            'name': _('''Copy of "%s"''') % self.name,
+            'responsible_id': self.responsible_id.id,
             'default_assigned_user_id': self.default_assigned_user_id.id
         })
         # Add tradepoint orders and product records
