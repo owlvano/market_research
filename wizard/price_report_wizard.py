@@ -20,7 +20,7 @@ class PriceReportWizard(models.TransientModel):
             'name': 'Price Report (%s - %s)' % (self.format_date(self.date_from), self.format_date(self.date_to)), 
             'res_model': 'price.report',
             'view_mode': 'graph',
-            'context': {'group_by': ['date:day','client_id'], 'search_default_product_id': self.product_id.id},
+            'context': {'group_by': ['date:day','client_id'], 'search_default_product_id': self.product_id.id, 'product_default_name_get': True},
             'domain': ['&',
                 ('date','>=', self.date_from),
                 ('date','<=', self.date_to)],

@@ -68,7 +68,7 @@
             <field name="res_model">price.report</field>
             <field name="view_type">form</field>
             <field name="view_mode">graph</field>
-            <field name="context">{'group_by':['date:day','client_id']}</field>
+            <field name="context">{'group_by':['date:day','client_id'], 'product_default_name_get': True}</field>
             <field name="view_id"></field>  <!-- force empty -->
         <!--         <field name="search_view_id" ref="view_order_product_search"/> -->
         </record>
@@ -78,6 +78,7 @@
             <field name="res_model">price.report</field>
             <field name="view_type">form</field>
             <field name="view_mode">pivot,tree</field>
+            <field name="context">{'product_default_name_get': True}</field>
             <field name="view_id"></field>
         </record>
 
