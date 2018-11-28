@@ -33,23 +33,6 @@ class MeasurementOrder(models.Model):
     @api.model
     def date_format(self, date):
         return Date.from_string(date).strftime("%d.%m.%Y")
-
-    @api.model
-    def name_get(self):
-        def name_compute(ord):
-            return (ord.id, ' '.join([ord.name_prefix_compute(), ord.name]))
-        
-        result = []
-
-        for order in self.sudo():
-            result.append(name_compute(order))
-
-        return result
-    
-    @api.multi
-    def name_prefix_compute(self):
-        for record in self:
-            return  _("(#%s - %s)") % (record.id, self.date_format(record.create_date))
     
     @api.multi
     def action_assign(self):
