@@ -15,6 +15,7 @@ class PriceReport(models.Model):
     assigned_user_id = fields.Many2one('res.users', "Assigned User", readonly=True)
 
     product_id = fields.Many2one('product.product', "Product", readonly=True)
+    categ_id = fields.Many2one('product.category', 'Internal Category', readonly=True)
 
     def _query_price_measurements(self):
         query_str = """
@@ -24,11 +25,13 @@ class PriceReport(models.Model):
                 t.assigned_user_id as assigned_user_id,
                 t.client_id as client_id,
                 p.id as product_id,
+                pt.categ_id as categ_id,
                 t.measurement_order_id as measurement_order_id
             FROM (
                 market_research_price_measurement pm
                     left join market_research_tradepoint_order t on (pm.tradepoint_order_id=t.id)
                     left join product_product p on (pm.product_id=p.id)
+                    left join product_template pt on (p.product_tmpl_id=pt.id)
             )
             GROUP BY
                 pm.create_date,
@@ -36,6 +39,7 @@ class PriceReport(models.Model):
                 t.assigned_user_id,
                 t.client_id,
                 p.id,
+                pt.categ_id,
                 t.measurement_order_id
         """ 
         return query_str
@@ -48,11 +52,13 @@ class PriceReport(models.Model):
                 m.responsible_id as assigned_user_id,
                 m.partner_id as client_id,
                 pp.id as product_id,
+                pt.categ_id as categ_id,
                 m.id as measurement_order_id
             FROM (
                 market_research_product p
                     left join market_research_measurement_order m on (p.measurement_order_id=m.id)
                     left join product_product pp on (p.product_id=pp.id)
+                    left join product_template pt on (pp.product_tmpl_id=pt.id)
             )
             GROUP BY 
                     p.create_date,
@@ -60,6 +66,7 @@ class PriceReport(models.Model):
                     m.responsible_id,
                     m.partner_id,
                     pp.id,
+                    pt.categ_id,
                     m.id
         """
         return query_str   
