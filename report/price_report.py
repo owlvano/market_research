@@ -21,7 +21,7 @@ class PriceReport(models.Model):
         query_str = """
             SELECT
                 pm.create_date as date,
-                pm.measured_price as measured_price,
+                NULLIF(pm.measured_price, 0) as measured_price,
                 t.assigned_user_id as assigned_user_id,
                 t.client_id as client_id,
                 p.product_id as product_id,
@@ -45,7 +45,7 @@ class PriceReport(models.Model):
         query_str = """
             SELECT
                 p.create_date as date,
-                p.price as measured_price,
+                NULLIF(p.price, 0) as measured_price,
                 m.responsible_id as assigned_user_id,
                 m.partner_id as client_id,
                 p.product_id as product_id,
