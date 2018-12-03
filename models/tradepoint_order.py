@@ -24,6 +24,13 @@ class TradepointOrder(models.Model):
     price_measurement_ids = fields.One2many('market.research.price.measurement', 'tradepoint_order_id', string="Price Measurements")
     progress = fields.Float(string="Progress", compute='_compute_progress')
 
+    @api.multi
+    def unlink(self):
+        for record in self:
+            for pm in record.price_measurement_ids:
+                pm.unlink()
+        return super(TradepointOrder, self).unlink()
+
     @api.constrains('measurement_order_id', 'client_id')
     def _check_description(self):
         self.ensure_one()

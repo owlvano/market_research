@@ -30,6 +30,15 @@ class MeasurementOrder(models.Model):
 
         return record
 
+    @api.multi
+    def unlink(self):
+        for record in self:
+            for tradepoint in record.tradepoint_order_ids:
+                tradepoint.unlink()
+            for product in record.product_ids:
+                product.unlink()
+        return super(MeasurementOrder, self).unlink()
+
     @api.model
     def date_format(self, date):
         return Date.from_string(date).strftime("%d.%m.%Y")
