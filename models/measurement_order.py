@@ -62,6 +62,14 @@ class MeasurementOrder(models.Model):
         return True
 
     @api.multi
+    def action_revert(self):
+        self.ensure_one()
+        for tradepoint_id in self.tradepoint_order_ids:
+            tradepoint_id.write({'stage': 'planned'})
+        self.write({'stage': 'planned'})
+        return True
+
+    @api.multi
     def copy_into_draft(self):
         self.ensure_one()
         # Create base record copy
