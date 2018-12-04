@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <pivot string="Prices Analysis" disable_linking="True">
                 <field name="product_id" type="row"/>
+                <field name="meas_type" type="col"/>
                 <field name="client_id" type="col"/>
                 <field name="measured_price" type="measure"/>
             </pivot>
