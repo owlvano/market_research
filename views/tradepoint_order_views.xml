@@ -30,7 +30,13 @@
         <field name="arch" type="xml">
             <form string="Tradepoint Order" create="false">
                 <header>
-                    <field name="stage" widget="statusbar" statusbar_visible="draft,planned,completed"/>
+                    <button name="action_complete" type="object" string="Mark as Done" attrs="{'invisible': [('stage', 'not in', 'planned')]}"/>
+                    <button class=" oe_stat_button"
+                            icon="fa-reply"
+                            type="action"
+                            name="%(action_tradepoint_order)d"
+                            string="Go Back" />
+                    <field name="stage" widget="statusbar" statusbar_visible="draft,planned,completed"/>                    
                 </header>
                 <sheet string="Tradepoint Order">
                     <div class="oe_button_box" name="button_box">
@@ -43,6 +49,7 @@
                                     <span class="o_stat_text ">Fill Prices</span>
                                 </div>                                
                         </button>
+                        
                     </div>
                     <div class="oe_title">
                         <h1 class="o_row">

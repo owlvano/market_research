@@ -62,3 +62,8 @@ class TradepointOrder(models.Model):
     @api.model
     def _get_default_stage(self):
         return self.env.context.get('default_stage') or 'draft'
+
+    @api.multi
+    def action_complete(self):
+        self.write({'stage': 'completed'})
+        return True
