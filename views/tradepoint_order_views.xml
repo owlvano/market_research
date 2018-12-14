@@ -148,6 +148,7 @@
         <field name="name">Tradepoint Orders</field>
         <field name="res_model">market.research.tradepoint.order</field>
         <field name="view_mode">tree,form,kanban</field>
+        <field name="target">main</field>
         <field name="context" eval="{'search_default_my_orders': 1}" />
     </record>
     
