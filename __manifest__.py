@@ -34,7 +34,8 @@
         'views/product_views.xml',
         'views/price_measurement_views.xml',
         'views/tradepoint_order_views.xml',
-        'views/market_research_technical_views.xml',
+        'views/market_research_views_technical.xml',
+        'views/sale_views.xml',
     ],
 
 }

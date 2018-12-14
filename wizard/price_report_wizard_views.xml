@@ -1,6 +1,5 @@
 <odoo>
-    <data>
-        
+    <data>   
         <record id="price_report_wizard_form" model="ir.ui.view">
             <field name="name">price.report.wizard.form</field>
             <field name="model">price.report.wizard</field>
@@ -36,6 +35,5 @@
             res_model="price.report.wizard"
             view_mode="form"
             target="new" />
-
     </data>
 </odoo>    

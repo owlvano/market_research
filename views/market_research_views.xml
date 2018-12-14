@@ -6,8 +6,13 @@
     <menuitem 
         name="Market Research" 
         id="menu_root"
-        parent="sales_team.menu_base_partner"
-        sequence="90"/>
+        web_icon="market_research,static/description/icon.png"/>
+
+    <menuitem 
+        name="Market Research" 
+        id="menu_base"
+		parent="menu_root"
+        sequence="10"/>
     
   </data>
 </odoo>

@@ -87,9 +87,9 @@
     
 
         <menuitem 
-            name="Market Research" 
+            name="Reports" 
             id="menu_price_report_root"
-            parent="sales_team.menu_sale_report"
+            parent="menu_root"
             sequence="90"/>
 
         <menuitem 

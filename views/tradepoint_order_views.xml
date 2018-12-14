@@ -158,7 +158,7 @@
     <menuitem 
         name="Tradepoint Orders" 
         id="menu_tradepoint_order" 
-        parent="menu_root"
+        parent="menu_base"
         sequence="20"
         action="action_tradepoint_order"/>
 

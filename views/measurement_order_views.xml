@@ -136,7 +136,7 @@
     <menuitem 
         name="Measurement Orders" 
         id="menu_measurement_order" 
-        parent="menu_root"
+        parent="menu_base"
         sequence="10"
         action="action_measurement_order"/>
 
