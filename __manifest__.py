@@ -25,7 +25,7 @@
 
     # always loaded
     'data': [
-        # 'security/user_groups.xml',
+        'security/user_groups.xml',
         'security/ir.model.access.csv',
         'wizard/price_report_wizard_views.xml',
         'report/price_report_views.xml',
