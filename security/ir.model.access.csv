@@ -7,3 +7,4 @@ measurement_order_manager,measurement order manager access,model_market_research
 tradepoint_order_manager,tradepoint order manager access,model_market_research_tradepoint_order,market_research.group_manager,1,1,1,1
 product_manager,product manager access,model_market_research_product,market_research.group_manager,1,1,1,1
 price_measurement_manager,price measurement manager access,model_market_research_price_measurement,market_research.group_manager,1,1,1,1
+price_report_manager,price report manager access,model_price_report,market_research.group_manager,1,1,1,1

@@ -90,6 +90,7 @@
             name="Reports" 
             id="menu_price_report_root"
             parent="menu_root"
+            groups="market_research.group_manager"
             sequence="90"/>
 
         <menuitem 

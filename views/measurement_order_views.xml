@@ -35,6 +35,7 @@
                             icon="fa-file-text"
                             type="action"
                             name="%(action_price_report_pivot)d"
+                            groups="sales_team.group_sale_manager"
                             context="{'search_default_measurement_order_id': active_id}"
                             attrs="{'invisible': [('stage', 'not in', 'completed')]}">
                                 <div class="o_stat_info o_form_field">
