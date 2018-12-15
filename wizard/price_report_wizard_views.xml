@@ -20,9 +20,11 @@
                             name="do_search" 
                             string="Search"
                             attrs="{'invisible':
-                            [('product_id', '=', False),
-                            ('date_from', '=', False),
-                            ('date_to', '=', False)]}" />
+                            [ '|' , '|' , 
+                            ('product_id', '=', False), 
+                            ('date_from', '=', False), 
+                            ('date_to', '=', False)
+                            ]}" />
                         <button special="cancel" string="Cancel" />
                     </footer>
                 </form>
