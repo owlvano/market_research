@@ -2,9 +2,8 @@
 <odoo>
     <data>
 
-        <menuitem id="menu_sales" name="Sales" parent="menu_root" sequence="5"/>
-        <menuitem id="menu_products" name="Products" parent="menu_sales" action="product.product_template_action" sequence="2"/>
-        <menuitem id="menu_partner_form" name="Customers" parent="menu_sales" action="base.action_partner_form" sequence="3"/>
+        <menuitem id="menu_products" name="Products" parent="menu_base" action="product.product_template_action" sequence="2"/>
+        <menuitem id="menu_partner_form" name="Customers" parent="menu_base" action="base.action_partner_form" sequence="3"/>
 
     </data>
 </odoo>
