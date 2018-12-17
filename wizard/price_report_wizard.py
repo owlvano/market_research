@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.fields import Date
 
 class PriceReportWizard(models.TransientModel):
@@ -17,7 +17,7 @@ class PriceReportWizard(models.TransientModel):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Price Report (%s - %s)' % (self.format_date(self.date_from), self.format_date(self.date_to)), 
+            'name': _('Price Report (%s - %s)') % (self.format_date(self.date_from), self.format_date(self.date_to)), 
             'res_model': 'price.report',
             'view_mode': 'graph,pivot',
             'context': {'group_by': ['date:day','client_id'], 'search_default_product_id': self.product_id.id, 'product_default_name_get': True},

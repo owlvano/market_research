@@ -27,9 +27,9 @@
     'data': [
         'security/user_groups.xml',
         'security/ir.model.access.csv',
+        'views/market_research_views.xml',
         'wizard/price_report_wizard_views.xml',
         'report/price_report_views.xml',
-        'views/market_research_views.xml',
         'views/measurement_order_views.xml',
         'views/product_views.xml',
         'views/price_measurement_views.xml',

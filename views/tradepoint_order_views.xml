@@ -1,6 +1,16 @@
 <odoo>
   <data>
 
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="action_tradepoint_order">
+        <field name="name">Tradepoint Orders</field>
+        <field name="res_model">market.research.tradepoint.order</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="target">main</field>
+        <field name="context" eval="{'search_default_my_orders': 1}" />
+    </record>
+
     <!-- list view definition -->
 
     <record model="ir.ui.view" id="tradepoint_order_list">
@@ -142,19 +152,8 @@
         </field>
     </record>
 
-    <!-- actions opening views on models -->
-    
-    <record model="ir.actions.act_window" id="action_tradepoint_order">
-        <field name="name">Tradepoint Orders</field>
-        <field name="res_model">market.research.tradepoint.order</field>
-        <field name="view_mode">tree,form,kanban</field>
-        <field name="target">main</field>
-        <field name="context" eval="{'search_default_my_orders': 1}" />
-    </record>
-    
-    
     <!-- menu categories -->
-    
+
     <menuitem 
         name="Tradepoint Orders" 
         id="menu_tradepoint_order" 
