@@ -1,8 +1,12 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-measurement_order_employee,measurement order employee access,model_market_research_measurement_order,market_research.group_employee,1,0,0,0
-tradepoint_order_employee,tradepoint order employee access,model_market_research_tradepoint_order,market_research.group_employee,1,1,0,0
-product_employee,product employee access,model_market_research_product,market_research.group_employee,1,0,0,0
-price_measurement_employee,price measurement employee access,model_market_research_price_measurement,market_research.group_employee,1,1,0,0
+measurement_order_employee_own,measurement order employee:own access,model_market_research_measurement_order,market_research.group_employee_own,1,0,0,0
+tradepoint_order_employee_own,tradepoint order employee:own access,model_market_research_tradepoint_order,market_research.group_employee_own,1,1,0,0
+product_employee_own,product employee:own access,model_market_research_product,market_research.group_employee_own,1,0,0,0
+price_measurement_employee_own,price measurement employee:own access,model_market_research_price_measurement,market_research.group_employee_own,1,1,0,0
+measurement_order_employee_all,measurement order employee:all access,model_market_research_measurement_order,market_research.group_employee_all,1,1,1,1
+tradepoint_order_employee_all,tradepoint order employee:all access,model_market_research_tradepoint_order,market_research.group_employee_all,1,1,1,1
+product_employee_all,product employee:all access,model_market_research_product,market_research.group_employee_all,1,1,1,1
+price_measurement_employee_all,price measurement employee:all access,model_market_research_price_measurement,market_research.group_employee_all,1,1,1,1
 measurement_order_manager,measurement order manager access,model_market_research_measurement_order,market_research.group_manager,1,1,1,1
 tradepoint_order_manager,tradepoint order manager access,model_market_research_tradepoint_order,market_research.group_manager,1,1,1,1
 product_manager,product manager access,model_market_research_product,market_research.group_manager,1,1,1,1

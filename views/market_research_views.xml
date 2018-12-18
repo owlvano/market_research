@@ -6,7 +6,7 @@
     <menuitem 
         name="Market Research" 
         id="menu_root"
-        groups="market_research.group_employee"
+        groups="market_research.group_employee_own"
         web_icon="market_research,static/description/icon.png"/>
 
     <menuitem 
