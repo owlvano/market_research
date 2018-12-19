@@ -90,7 +90,7 @@
             name="Reports" 
             id="menu_price_report_root"
             parent="menu_root"
-            sequence="90"/>
+            sequence="80"/>
 
         <menuitem 
             name="Prices Dynamics" 
